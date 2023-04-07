@@ -99,5 +99,4 @@ const test1=async()=>{
 }
 
 
-//isUserLogged();
-test1();
+isUserLogged();
