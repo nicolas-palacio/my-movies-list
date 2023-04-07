@@ -31,27 +31,33 @@ const getCarouselRowMovies=async()=>{
     let data= await response.json()
     let trendingMovies=data.results;
 
+    let newImgID=0;
+
     trendingMovies.map(function (cur,index){
         sliders.insertAdjacentHTML(
             "beforeend",
-            `<img class="img-${index} slider-img" src="${imgURL}${cur.poster_path}"/>` 
+            `<img class="img-${index}  slider-img" id="${newImgID}" src="${imgURL}${cur.poster_path}"/>` 
         )
-
+      
+        addImgEvent(newImgID,cur.id)
+        newImgID+=1;
     });
 
     scrollPerClick= document.querySelector(".img-1").clientWidth + ImagePadding;
 }
 
+const addImgEvent=(img,movieID)=>{
+    const imgDOM=document.getElementById(`${img}`);
 
-
-
+    imgDOM.addEventListener("click",(e)=>{
+        sessionStorage.setItem("movieSelectedID",movieID);
+        window.location.href="http://localhost:5500/movie-page.html";
+    });
+}
 
 
 getMovies();
 getCarouselRowMovies();
-
-
-
 
 const sliderScrollLeft=()=>{
     sliders.scrollTo({

@@ -29,7 +29,7 @@ const searchMovie=async(url)=>{
 const showResultsMovies=(movies)=>{
     searchResultsCard.style="display:flex;width:225px"
     
-    movies.slice(0,5).forEach(movie => {
+    movies.slice(0,4).forEach(movie => {
         console.log(movie.original_title); 
         const newDiv=document.createElement("div");
         newDiv.classList.add("list", "border-bottom");
