@@ -25,7 +25,6 @@ const getMovies= async() =>{
 }
 
 
-
 const getCarouselRowMovies=async()=>{
     let response= await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${APIKEY}&language=en-US&page=1`)
     let data= await response.json()
@@ -56,9 +55,6 @@ const addImgEvent=(img,movieID)=>{
 }
 
 
-getMovies();
-getCarouselRowMovies();
-
 const sliderScrollLeft=()=>{
     sliders.scrollTo({
         top:5,
@@ -80,6 +76,27 @@ const sliderScrollRight=()=>{
         });
     }
 }
+
+const testPut=async()=>{
+    let res = await axios.put("http://localhost:8888/api/v1/user",{
+        username:"nicoo"
+    },{
+        headers:{
+            'Authorization':"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuaWNvLnAyMjAxM0BnbWFpbC5jb20iLCJpYXQiOjE2ODEwMTMzMDEsImV4cCI6MTY4MTAxNDc0MX0.m-ag8XpR3biQUN4b7lb2PXx3Ibj4jyjTAN1C3gd8jOQ"
+        }
+    }).then((response)=>{
+        let data = response.data;
+        console.log(data);
+ 
+    }).catch((error)=>{
+        console.log(error);
+    });
+}
+
+
+getMovies();
+getCarouselRowMovies();
+//testPut();
 
 
 
