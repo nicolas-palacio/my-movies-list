@@ -7,6 +7,7 @@ const userEmail=document.getElementById("user-email");
 const userCountry=document.getElementById("user-country");
 const userPassword=document.getElementById("user-password");
 const userPasswordRep=document.getElementById("user-password-rep");
+let firstOptionRemoved=false;
 
 
 
@@ -18,23 +19,27 @@ form.addEventListener("submit",(e)=>{
 const loadCountryList=async ()=>{
     const response = await fetch("../countries.json");
     const countries = await response.json();
-    console.log(countries[0].name);
 
-    /*langArray.map( (lang, i) => {
-        let opt = document.createElement("option");
-        opt.value = i; // the index
-        opt.innerHTML = lang;
+    let opt = document.createElement("option");
+    opt.value = 'Your country'; 
+    opt.innerHTML = 'Your country';
+    userCountry.append(opt);
+
+    countries.map( (country, i) => {
+        let opt = document.createElement("option");       
+        opt.value = country.name; 
+        opt.innerHTML = country.name;
         userCountry.append(opt);
-    });*/
+    });
 
 }
 
-/*categories.forEach(category=>{
-    const option = document.createElement("option");
-    option.innerHTML=` <option value="empty" selected>${category}</option>`
-    categoryBoxForm.appendChild(option);
-});*/
-
+userCountry.addEventListener('click',(e)=>{
+    if(userCountry.value!='Your country' && !firstOptionRemoved){
+        userCountry.remove(0);
+        firstOptionRemoved=true;
+    }
+})
 
 async function signUp() {
 
