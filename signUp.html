@@ -69,38 +69,57 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="text" id="username" class="form-control" />
                             <label class="form-label" for="form3Example1c">Your username</label>
+                            <input type="text" id="username" class="form-control" />
+                            <div class="invalid-feedback" id="invalid-email">
+                              Please provide a valid username.
+                            </div>
+                            
                           </div>
                         </div>
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="email" id="user-email" class="form-control" />
-                            <label class="form-label" for="form3Example3c">Your email</label>
+                            <label class="form-label" for="form3Example3c">Your email</label> 
+                            <input type="email" id="user-email" class="form-control is-invalid" required/>
+                            <div class="invalid-feedback" id="invalid-email">
+                              Please provide a valid email.
+                            </div>
+                                                       
                           </div>
                         </div>
 
                         <div class="d-flex flex-row align-items-center mb-4" style="max-width:380px;margin-left: 15px;">
-                          <select class="form-select d-flex flex-row align-items-center" aria-label="Default select example" id="user-country">
+                          
+                            <div class="form-outline flex-fill mb-0">
+                            <select class="form-select d-flex flex-fill align-items-center" aria-label="Default select example" id="user-country">
+                              
+                            </select>
                             
-                          </select>                
+                            <div class="invalid-feedback row" id="invalid-country" style="margin-left: 5px;">   
+                              Please select your country.
+                            </div> 
+                          </div>   
                         </div>
+                        
+                        
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="password" id="user-password" class="form-control" />
                             <label class="form-label" for="form3Example4c">Password</label>
+                            <input type="password" id="user-password" class="form-control" />
+                            
                           </div>
                         </div>
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="password" id="user-password-rep" class="form-control" />
                             <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                            <input type="password" id="user-password-rep" class="form-control" />
+                            
                           </div>
                         </div>
 

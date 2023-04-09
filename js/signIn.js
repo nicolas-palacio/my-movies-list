@@ -11,18 +11,18 @@ loginBtn.addEventListener('click',(e)=>{
 
 async function signIn() {    
    
-    const user="nico@gmail.com"
-    const pass="a12345678" 
+    const user=`${emailInput.value}`
+    const pass="secure123" 
     const form={
         username:user,
         password:pass
     }
 
     const params= new URLSearchParams();
-    params.append('username','nico@gmail.com');
+    params.append('email','nico@gmail.com');
     params.append('password','a12345678');
 
-    axios.post("http://localhost:8080/api/login",params).then((response)=>{
+    axios.post("http://localhost:8888/api/v1/auth/authenticate",params).then((response)=>{
         const tokenAccess = response.data.access_token;
         sessionStorage.setItem("tokenAccess",tokenAccess);
         const tokenRefresh=response.data.refresh_token;

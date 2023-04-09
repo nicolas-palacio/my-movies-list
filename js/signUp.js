@@ -42,21 +42,28 @@ userCountry.addEventListener('click',(e)=>{
 })
 
 async function signUp() {
-
-    //let payload = { name: 'John Doe', occupation: 'gardener' };
-    
-    let res = await axios.post("http://localhost:8080/api/v1/registration",{
-        firstName: `${username.value}`,
+    if(userCountry.value=='Your country'){
+        userCountry.value='';
+    }
+   
+    let res = await axios.post("http://localhost:8888/api/v1/auth/register",{
+        username: `${username.value}`,
         email: `${userEmail.value}`,
+        country:`${userCountry.value}`,
         password: `${userPassword.value}`,
-        passwordConfirmation: `${userPasswordRep.value}`
+        passwordConfirm: `${userPasswordRep.value}`
     }).then((response)=>{
-        let data = response.data;
+        let data = response.data;       
         console.log(data);
+        window.location.href='http://localhost:5500/confirmation-page.html' 
  
     }).catch((error)=>{
-        console.log(error);
+        console.log(error.response.data.message);
     });
+}
+
+const validateInputs=()=>{
+
 }
 
 loadCountryList();
