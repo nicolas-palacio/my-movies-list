@@ -54,7 +54,7 @@
   </header>
 
   
-    <section class="vh-100 bg-dark">
+    <section class="vh-100 bg-dark" id="form-card">
         <div class="container h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-lg-12 col-xl-11">
@@ -156,10 +156,10 @@
                   <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">     
                       <div class="d-flex justify-content-center">
-                        <div class="spinner-border text-success spinner-border-lg d-none" role="status" style="width:10rem; height:10rem;margin-top: 50% ;z-index: 10;">
+                        <div class="spinner-border text-success spinner-border-lg d-none" id="spinner-card" role="status" style="width:10rem; height:10rem;margin-top: 50% ;z-index: 10;">
                           <span class="sr-only"></span>
                         </div>
-                        <div>
+                        <div class="d-none" id="success-message">
                           <img src="./css/check-circle-regular.svg" style="color:#198754; height:100px ;margin-left:150px; margin-top: 30% ;"/>
                           <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 ">Check your email to confirm your account.</p>
                           
@@ -175,10 +175,6 @@
           </div>
         </div>
       </section>
-
-
-
-
 
       
 <script src="js/bootstrap.js"></script>  
