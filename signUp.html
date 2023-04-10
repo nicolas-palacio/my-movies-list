@@ -53,6 +53,7 @@
 
   </header>
 
+  
     <section class="vh-100 bg-dark">
         <div class="container h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
@@ -60,9 +61,8 @@
               <div class="card text-black" style="border-radius: 25px;">
                 <div class="card-body p-md-5">
                   <div class="row justify-content-center">
-                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-      
-                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">     
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 ">Sign up</p>
       
                       <form class="mx-1 mx-md-4" id="form-sign-up">
       
@@ -71,7 +71,7 @@
                           <div class="form-outline flex-fill mb-0">
                             <label class="form-label" for="form3Example1c">Your username</label>
                             <input type="text" id="username" class="form-control" />
-                            <div class="invalid-feedback" id="invalid-email">
+                            <div class="invalid-feedback" id="invalid-username">
                               Please provide a valid username.
                             </div>
                             
@@ -82,7 +82,7 @@
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
                             <label class="form-label" for="form3Example3c">Your email</label> 
-                            <input type="email" id="user-email" class="form-control is-invalid" required/>
+                            <input type="email" id="user-email" class="form-control" />
                             <div class="invalid-feedback" id="invalid-email">
                               Please provide a valid email.
                             </div>
@@ -110,7 +110,9 @@
                           <div class="form-outline flex-fill mb-0">
                             <label class="form-label" for="form3Example4c">Password</label>
                             <input type="password" id="user-password" class="form-control" />
-                            
+                            <div class="invalid-feedback row" id="invalid-password" style="margin-left: 5px;">   
+                              Please digit a valid password.
+                            </div> 
                           </div>
                         </div>
       
@@ -119,7 +121,9 @@
                           <div class="form-outline flex-fill mb-0">
                             <label class="form-label" for="form3Example4cd">Repeat your password</label>
                             <input type="password" id="user-password-rep" class="form-control" />
-                            
+                            <div class="invalid-feedback row" id="invalid-rep-password" style="margin-left: 5px;">   
+                              Please repeat your password.
+                            </div> 
                           </div>
                         </div>
 
@@ -129,14 +133,39 @@
       
                       </form>
                       
-                      <div id="signup-successful" style="display: none;">
-                        <img src="./css/check-circle-regular.svg" class="" style="height:100px ;"/>
-                        <label class="form-label" for="form3Example4cd">Check your email to confirm the account.</label>
-                      </div>
+                      
                     </div>
                     <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
       
                       <img src="https://www.muddycolors.com/wp-content/uploads/2017/12/48f27-original-7476-1438603532-9.jpg" class="img-fluid" alt="Sample image" style="border-radius: 10px;">
+      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="vh-100 bg-dark d-none" id="signup-successful">
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+              <div class="card text-black" style="border-radius: 25px;height:700px;">
+                <div class="card-body p-md-5">
+                  <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">     
+                      <div class="d-flex justify-content-center">
+                        <div class="spinner-border text-success spinner-border-lg d-none" role="status" style="width:10rem; height:10rem;margin-top: 50% ;z-index: 10;">
+                          <span class="sr-only"></span>
+                        </div>
+                        <div>
+                          <img src="./css/check-circle-regular.svg" style="color:#198754; height:100px ;margin-left:150px; margin-top: 30% ;"/>
+                          <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 ">Check your email to confirm your account.</p>
+                          
+                        </div>
+                      </div>
+                                             
       
                     </div>
                   </div>

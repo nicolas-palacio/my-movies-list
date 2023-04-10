@@ -13,6 +13,7 @@ let firstOptionRemoved=false;
 
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
+    validateInputs();
     signUp();
 })
 
@@ -54,16 +55,45 @@ async function signUp() {
         passwordConfirm: `${userPasswordRep.value}`
     }).then((response)=>{
         let data = response.data;       
-        console.log(data);
+        console.log(response.status);
         window.location.href='http://localhost:5500/confirmation-page.html' 
  
     }).catch((error)=>{
-        console.log(error.response.data.message);
+        console.log(error.response.data.message.substring(28));
+        showInvalidInputMessage(error.response.data.message.substring(28));
     });
 }
 
 const validateInputs=()=>{
+    if(username.value==''){
+        username.classList.add('is-invalid');
+    }
 
+    if(userEmail.value==''){
+        userEmail.classList.add('is-invalid');
+    }
+
+    if(userCountry.value=='Your country'){
+        userCountry.classList.add('is-invalid');
+    }
+
+    if(userPassword.value==''){
+        userPassword.classList.add('is-invalid');
+    }
+
+    if(userPasswordRep.value==''){
+        userPasswordRep.classList.add('is-invalid');
+    }
+
+
+}
+
+const showInvalidInputMessage=(message)=>{
+    if(message.includes("Username") ||message.includes("username")){
+        username.classList.add('is-invalid');
+        const usernameInvalidMessage=document.getElementById('invalid-username');
+        usernameInvalidMessage.innerHTML=`${message}`;
+    }
 }
 
 loadCountryList();
