@@ -85,7 +85,7 @@ btnProfile.addEventListener("click",(e)=>{
 
 const isUserLogged=()=>{
 
-    if(sessionStorage.getItem("tokenAccess")=='null'){
+    if(sessionStorage.getItem("tokenAccess")==null ||sessionStorage.getItem("tokenAccess")=='null'){
         dropdownUserMenu.classList.add("d-none");        
     }else{         
         btnSignUp.classList.add("d-none");
@@ -110,15 +110,6 @@ const getUserData=async(token)=>{
 
 const loadUsersData= (data)=>{ 
     dropdownUser.innerHTML=data.username;
-}
-
-const test1=async()=>{
-    let data='';
-    await axios.get('http://localhost:8888/api/v1/user').then((res)=>{
-        data=res.data;          
-    }).catch((error=>{
-        return error;
-    }))    
 }
 
 
