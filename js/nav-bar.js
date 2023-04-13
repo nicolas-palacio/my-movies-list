@@ -4,7 +4,7 @@ const btnSignUp=document.getElementById("btn-sign-up");
 const btnSignIn=document.getElementById("btn-sign-in");
 const btnProfile=document.getElementById("btn-profile");
 const btnSettings=document.getElementById("btn-settings");
-const btnSingOut=document.getElementById("btn-signout");
+const btnSignOut=document.getElementById("btn-signout");
 
 const searchBar=document.getElementById("search-bar");
 const searchMenu=document.getElementById("search-menu");
@@ -19,6 +19,24 @@ searchBar.addEventListener("input",(e)=>{
     }
     const url=`https://api.themoviedb.org/3/search/movie?query=${searchBar.value}&api_key=${APIKEY}`;
     searchMovie(url);   
+});
+
+btnSignOut.addEventListener("click",async (e)=>{
+
+    const tokenAccess=sessionStorage.getItem("tokenAccess");
+    await axios.get('http://localhost:8888/api/v1/auth/logout',{
+        headers:{
+            'Authorization':`Bearer ${tokenAccess}`
+        }
+    }).then((res)=>{
+        data=res.data;
+        console.log("HEY "+data)
+        sessionStorage.setItem("tokenAccess",null);
+        isUserLogged();       
+    }).catch((error=>{
+        return error;
+    }))
+    
 });
 
 const searchMovie=async(url)=>{
@@ -65,10 +83,10 @@ btnProfile.addEventListener("click",(e)=>{
 
 
 const isUserLogged=()=>{
-    if(sessionStorage.getItem("tokenAccess")==null){
-        dropdownUserMenu.classList.add("d-none");  
-    }else{
-         
+
+    if(sessionStorage.getItem("tokenAccess")=='null'){
+        dropdownUserMenu.classList.add("d-none");        
+    }else{         
         btnSignUp.classList.add("d-none");
         btnSignIn.classList.add("d-none");
         getUserData(sessionStorage.getItem("tokenAccess"));
