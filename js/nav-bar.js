@@ -83,7 +83,6 @@ const getUserData=async(token)=>{
         }
     }).then((res)=>{
         data=res.data;       
-        console.log(data)
         loadUsersData(data);
     }).catch((error=>{
         return error;
@@ -97,8 +96,7 @@ const loadUsersData= (data)=>{
 const test1=async()=>{
     let data='';
     await axios.get('http://localhost:8888/api/v1/user').then((res)=>{
-        data=res.data;  
-        console.log(data)         
+        data=res.data;          
     }).catch((error=>{
         return error;
     }))    

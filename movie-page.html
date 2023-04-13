@@ -20,40 +20,40 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div id="navbarMenu" class="collapse navbar-collapse" >
-                <ul class="navbar-nav me-auto">
+            <div id="navbarMenu" class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto" >
                     <li class="nav-item"><input class="form-control mr-sm-2" type="search" placeholder="Search movie" aria-label="Search" id="search-bar"></li>
                     <li class="nav-item ms-2"><button class="btn btn-success my-2 my-sm-0" type="submit">Search</button></li>
-                    <li class="nav-item ms-2" id="btn-sign-up"><a class="btn btn-outline-success my-2 my-sm-0" href="signUp.html">Sign Up</a></li>
+                    <li class="nav-item ms-2"  id="btn-sign-up"><a class="btn btn-outline-success my-2 my-sm-0" href="signUp.html">Sign Up</a></li>
                     <li class="nav-item ms-2" id="btn-sign-in"><a class="btn btn-outline-success my-2 my-sm-0" href="signIn.html">Sign In</a></li>
                 </ul>
             </div>               
         </div>
-        <div class="dropdown" id="dropdown-user-menu">
+        <div class="dropdown me-5" id="dropdown-user-menu">
           <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdown-user" data-bs-toggle="dropdown" aria-expanded="false">
-            username
-          </a>
-        
+            username                
+          </a>  
           <ul class="dropdown-menu" aria-labelledby="dropdown-user">
-            <li ><a class="dropdown-item" href="#"id="btn-profile">Profile</a></li>
+            <li ><a class="dropdown-item" href="#"id="btn-profile">My profile</a></li>
             <li><a class="dropdown-item" href="#" id="btn-settings">Settings</a></li>
             <li><a class="dropdown-item" href="#" id="btn-signout">Logout</a></li>
           </ul>
         </div>
     </nav>
-    <div class="container mt-auto ms-0 position-absolute " style="z-index: 10;" id="search-menu">
-      <div class="row d-flex justify-content-center" >
+
+    <div class="container mt-auto  position-absolute" style="z-index: 10;margin-left: 150px;" id="search-menu">
+      <div class="row d-flex ">
           <div class="col-md-5">
               <div class="card" style="display: none;" id="results-card">                                            
               </div>
           </div>
       </div>
-    </div>
+  </div>
   
 
-  </header>
+</header>
     
-    <div class="card mb-3" style="max-width: auto; margin: 50px 50px;">
+    <div class="card mb-3" style="max-width: auto; margin: 65px 65px;">
         <div class="row g-0">
           <div class="col-md-4">
             <img src="..." class="img-fluid rounded-start" alt="..." id="card-movie-img">
@@ -62,9 +62,10 @@
             <div class="card-body">
               <h5 class="card-title" id="card-movie-title">Card title</h5>
               <p class="card-text" id="card-movie-description">Description.</p>
+              <p class="card-text"><small class="text-muted" id="card-movie-year">Year: </small></p>
               <p class="card-text"><small class="text-muted" id="card-movie-duration">Duration: </small></p>
-              <p class="card-text"><a class="btn btn-outline-success my-2 my-sm-0" href="#" id="btn-add-movie">Add to list</a></p>
-              <p class="card-text"><a class="btn btn-outline-danger" href="#" id="btn-add-movie">Remove from the list</a></p>
+              <p class="card-text"><a class="btn btn-outline-success my-2 my-sm-3" href="#" id="btn-add-movie">Add to list</a></p>
+              <p class="card-text"><a class="btn btn-outline-danger my-sm-3 d-none" href="#" id="btn-remove-movie">Remove from the list</a></p>
             </div>
           </div>
         </div>
