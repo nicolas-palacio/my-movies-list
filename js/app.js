@@ -42,7 +42,7 @@ const getCarouselRowMovies=async()=>{
         newImgID+=1;
     });
 
-    scrollPerClick= document.querySelector(".img-1").clientWidth + ImagePadding;
+    scrollPerClick= document.querySelector(".img-1").clientWidth + ImagePadding+300;
 }
 
 const addImgEvent=(img,movieID)=>{
@@ -96,8 +96,5 @@ const testPut=async()=>{
 
 getMovies();
 getCarouselRowMovies();
-//testPut();
-
-
 
 

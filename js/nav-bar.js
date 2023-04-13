@@ -7,18 +7,24 @@ const btnSettings=document.getElementById("btn-settings");
 const btnSingOut=document.getElementById("btn-signout");
 
 const searchBar=document.getElementById("search-bar");
+const searchMenu=document.getElementById("search-menu");
 let fragment=document.createDocumentFragment();
 const searchResultsCard=document.getElementById("results-card");
 
 
 searchBar.addEventListener("input",(e)=>{
+    if(searchBar.value==''){
+        searchResultsCard.innerHTML='';
+        searchMenu.classList.add("d-none");
+    }
     const url=`https://api.themoviedb.org/3/search/movie?query=${searchBar.value}&api_key=${APIKEY}`;
     searchMovie(url);   
 });
 
 const searchMovie=async(url)=>{
+    searchMenu.classList.remove("d-none");
     searchResultsCard.innerHTML='';
-
+    
     let response= await fetch(url)
     let data= await response.json();
     let movies=data.results;
@@ -29,15 +35,14 @@ const searchMovie=async(url)=>{
 const showResultsMovies=(movies)=>{
     searchResultsCard.style="display:flex;width:225px"
     
-    movies.slice(0,4).forEach(movie => {
-        console.log(movie.original_title); 
+    movies.slice(0,3).forEach(movie => {       
         const newDiv=document.createElement("div");
         newDiv.classList.add("list", "border-bottom");
         newDiv.style='cursor:pointer;display: flex;'
         newDiv.innerHTML=`<i class="fa fa-weibo"></i>
                           <div class="d-flex flex-column ml-3"> <span>${movie.original_title}</span>
-                            <img  alt="..." src="${imgURL}${movie.poster_path}" id="img-search-bar">
                             <small>${movie.release_date.substring(0,4)}</small>
+                                <img  alt="..." src="${imgURL}${movie.poster_path}" id="img-search-bar">                          
                            </div>`
         addDivEvent(newDiv,movie.id);                   
         fragment.appendChild(newDiv);
@@ -61,23 +66,24 @@ btnProfile.addEventListener("click",(e)=>{
 
 const isUserLogged=()=>{
     if(sessionStorage.getItem("tokenAccess")==null){
-        dropdownUserMenu.classList.add("hide");  
+        dropdownUserMenu.classList.add("d-none");  
     }else{
          
-        btnSignUp.classList.add("hide");
-        btnSignIn.classList.add("hide");
+        btnSignUp.classList.add("d-none");
+        btnSignIn.classList.add("d-none");
         getUserData(sessionStorage.getItem("tokenAccess"));
     }
 }
 
 const getUserData=async(token)=>{
     let data='';
-    await axios.get('http://localhost:8888/api/v1/users/info',{
+    await axios.get('http://localhost:8888/api/v1/user/info',{
         headers:{
             'Authorization':`Bearer ${token}`
         }
     }).then((res)=>{
         data=res.data;       
+        console.log(data)
         loadUsersData(data);
     }).catch((error=>{
         return error;
@@ -85,7 +91,7 @@ const getUserData=async(token)=>{
 }
 
 const loadUsersData= (data)=>{ 
-    dropdownUser.innerHTML=data.name;
+    dropdownUser.innerHTML=data.username;
 }
 
 const test1=async()=>{

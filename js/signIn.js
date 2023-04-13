@@ -1,7 +1,7 @@
 const emailInput= document.getElementById("email-input");
 const passwordInput= document.getElementById("password-input");
 const loginBtn=document.getElementById("login-btn");
-
+const emailNotConfirm = document.getElementById('invalid-credentials');
 
 loginBtn.addEventListener('click',(e)=>{
     e.preventDefault()
@@ -11,22 +11,33 @@ loginBtn.addEventListener('click',(e)=>{
 
 async function signIn() {    
    
-    const user=`${emailInput.value}`
-    const pass="secure123" 
-    const form={
-        username:user,
-        password:pass
-    }
-
-    const params= new URLSearchParams();
-    params.append('email','nico@gmail.com');
-    params.append('password','a12345678');
-
-    axios.post("http://localhost:8888/api/v1/auth/authenticate",params).then((response)=>{
-        const tokenAccess = response.data.access_token;
+    axios.post("http://localhost:8888/api/v1/auth/authenticate",{
+        email:`${emailInput.value}`,
+        password:`${passwordInput.value}`
+    }).then((response)=>{
+        const tokenAccess = response.data.token;       
         sessionStorage.setItem("tokenAccess",tokenAccess);
-        const tokenRefresh=response.data.refresh_token;
-        sessionStorage.setItem("tokenRefresh",tokenRefresh);
         window.location.href="http://localhost:5500/index.html";    
-    })
+    }).catch((error)=>{
+        sessionStorage.setItem("emailNotConfirmed",emailInput.value);
+        showInvalidInputMessage(error.response.data.message);
+        emailInput.classList.add("is-invalid");
+        passwordInput.classList.add("is-invalid");
+        
+    });
+}
+
+const showInvalidInputMessage=(message)=>{
+    if(message.includes("403")){       
+        emailNotConfirm.innerHTML = `${message.substring(16)}.<div></div> <a href="signUp.html" class="">Re-send email.</a>`;
+       
+    }else{
+        emailNotConfirm.innerHTML = `Incorrect username or password.`;
+    }
+}
+
+const reSendEmail=async()=>{
+    const email=sessionStorage.getItem("emailNotConfirmed",emailInput.value);
+
+
 }
