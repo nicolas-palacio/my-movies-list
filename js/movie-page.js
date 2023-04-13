@@ -11,7 +11,7 @@ const fillCard=(data)=>{
     cardTitle.innerText=data.original_title;
     cardImg.setAttribute('src',`${imgURL}${data.backdrop_path}`);
     cardDescription.innerText=data.overview;
-    cardYear.innerText="Year: "+data.release_date;
+    cardYear.innerText="Release date: "+data.release_date;
     cardDuration.innerText="Duration: "+data.runtime+" min.";
     //TO-DO Check if user got the movie; 
 };

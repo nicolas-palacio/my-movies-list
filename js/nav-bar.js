@@ -32,7 +32,8 @@ btnSignOut.addEventListener("click",async (e)=>{
         data=res.data;
         console.log("HEY "+data)
         sessionStorage.setItem("tokenAccess",null);
-        isUserLogged();       
+        isUserLogged();
+        window.location.href="http://localhost:5500/index.html";     
     }).catch((error=>{
         return error;
     }))
