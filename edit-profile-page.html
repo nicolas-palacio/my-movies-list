@@ -20,38 +20,38 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div id="navbarMenu" class="collapse navbar-collapse" >
-                <ul class="navbar-nav me-auto">
+            <div id="navbarMenu" class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto" >
                     <li class="nav-item"><input class="form-control mr-sm-2" type="search" placeholder="Search movie" aria-label="Search" id="search-bar"></li>
                     <li class="nav-item ms-2"><button class="btn btn-success my-2 my-sm-0" type="submit">Search</button></li>
-                    <li class="nav-item ms-2" id="btn-sign-up"><a class="btn btn-outline-success my-2 my-sm-0" href="signUp.html">Sign Up</a></li>
+                    <li class="nav-item ms-2"  id="btn-sign-up"><a class="btn btn-outline-success my-2 my-sm-0" href="signUp.html">Sign Up</a></li>
                     <li class="nav-item ms-2" id="btn-sign-in"><a class="btn btn-outline-success my-2 my-sm-0" href="signIn.html">Sign In</a></li>
                 </ul>
             </div>               
         </div>
-        <div class="dropdown" id="dropdown-user-menu">
+        <div class="dropdown me-5" id="dropdown-user-menu">
           <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdown-user" data-bs-toggle="dropdown" aria-expanded="false">
-            username
-          </a>
-        
+            username                
+          </a>  
           <ul class="dropdown-menu" aria-labelledby="dropdown-user">
-            <li ><a class="dropdown-item" href="#"id="btn-profile">Profile</a></li>
-            <li><a class="dropdown-item" href="#" id="btn-settings">Settings</a></li>
+            <li ><a class="dropdown-item" href="profile-page.html"id="btn-profile">My profile</a></li>
+            <li><a class="dropdown-item" href="edit-profile-page.html" id="btn-settings">Settings</a></li>
             <li><a class="dropdown-item" href="#" id="btn-signout">Logout</a></li>
           </ul>
         </div>
     </nav>
-    <div class="container mt-auto ms-0 position-absolute " style="z-index: 10;" id="search-menu">
-      <div class="row d-flex justify-content-center" >
+
+    <div class="container mt-auto  position-absolute" style="z-index: 10;margin-left: 150px;" id="search-menu">
+      <div class="row d-flex ">
           <div class="col-md-5">
               <div class="card" style="display: none;" id="results-card">                                            
               </div>
           </div>
       </div>
-    </div>
+  </div>
   
 
-  </header>
+</header>
 
     <section class="vh-100 bg-dark">
         <div class="container h-100">
@@ -69,37 +69,60 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example1c">Username</label>
                             <input type="text" id="user-name" class="form-control" />
-                            <label class="form-label" for="form3Example1c">Your Name</label>
                           </div>
                         </div>
+                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                          <button type="submit" class="btn btn-primary btn-s">Update username</button>
+                        </div>
+                        <hr style="color: #080808;;margin:20px;"/> 
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example3c">Email</label>
                             <input type="email" id="user-email" class="form-control" />
-                            <label class="form-label" for="form3Example3c">Your Email</label>
                           </div>
+                                                  
                         </div>
+                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                          <button type="submit" class="btn btn-primary btn-s">Update email</button>
+                        </div>
+                        <hr style="color: #080808;;margin:20px;"/> 
+                        
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example4c">Password</label>
                             <input type="password" id="user-password" class="form-control" />
-                            <label class="form-label" for="form3Example4c">Password *</label>
                           </div>
                         </div>
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example4cd">Repeat your password</label>
                             <input type="password" id="user-password-rep" class="form-control" />
-                            <label class="form-label" for="form3Example4cd">Repeat your password *</label>
                           </div>
                         </div>
 
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                          <button type="submit" class="btn btn-primary btn-lg">Edit</button>
+                          <button type="submit" class="btn btn-primary btn-s">Update password</button>
+                        </div>
+                        <hr style="color: #080808;;margin:20px;"/> 
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example4cd">Country</label>
+                            <input type="password" id="user-country" class="form-control" />
+                          </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                          <button type="submit" class="btn btn-primary btn-s">Update country</button>
                         </div>
                         
                       </form>
