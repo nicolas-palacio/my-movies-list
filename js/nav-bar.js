@@ -8,6 +8,7 @@ const btnSignOut=document.getElementById("btn-signout");
 
 const searchBar=document.getElementById("search-bar");
 const searchMenu=document.getElementById("search-menu");
+const userProfilePic=document.getElementById("user-profile-pic-nav");
 let fragment=document.createDocumentFragment();
 const searchResultsCard=document.getElementById("results-card");
 
@@ -86,10 +87,13 @@ btnProfile.addEventListener("click",(e)=>{
 const isUserLogged=()=>{
 
     if(sessionStorage.getItem("tokenAccess")==null ||sessionStorage.getItem("tokenAccess")=='null'){
-        dropdownUserMenu.classList.add("d-none");        
+        dropdownUserMenu.classList.add("d-none");
+        userProfilePic.classList.add("d-none");
+
     }else{         
         btnSignUp.classList.add("d-none");
         btnSignIn.classList.add("d-none");
+        userProfilePic.classList.remove("d-none");
         getUserData(sessionStorage.getItem("tokenAccess"));
     }
 }
