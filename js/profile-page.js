@@ -2,7 +2,7 @@ const profileName=document.getElementById("profile-name");
 const hoursViewed=document.getElementById("hours-viewed");
 const profileCountry=document.getElementById("profile-location");
 const profileMoviePoster=document.getElementById("profile-movie-1");
-
+const btnEditProfile=document.getElementById("btn-edit-profile");
 
 const showProfile=async ()=>{
     let data='';
@@ -20,6 +20,10 @@ const showProfile=async ()=>{
     })) 
     
 }
+
+btnEditProfile.addEventListener("click",(e)=>{
+    window.location.href="edit-profile-page.html";
+});
 
 const loadProfile=(data)=>{
     profileName.innerHTML=data.username;

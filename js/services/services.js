@@ -7,8 +7,21 @@ const logout=()=>{
     sessionStorage.setItem("tokenRefresh",null);
 }
 
-const refreshTokens=()=>{
-    //TODO Request refresh token
+const refreshTokens=async()=>{
+    const tokenAccess=sessionStorage.getItem("tokenAccess");
+    await axios.get('http://localhost:8888/api/v1/auth/token/refresh',{
+        headers:{
+            'Authorization':`Bearer ${tokenAccess}`
+        }
+    }).then((res)=>{
+        data=res.data;
+        console.log("TOKEN REFRESHED");
+        sessionStorage.setItem("tokenAccess",data);
+         
+    }).catch((error=>{
+        console.log("HELLO")
+        return error;
+    })) 
 }
 
 
@@ -27,6 +40,7 @@ const getMovieData=async(movieID)=>{
         return error;
     })
 }
+
 
 
 
