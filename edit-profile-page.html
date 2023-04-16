@@ -87,6 +87,9 @@
                           <div class="form-outline flex-fill mb-0">
                             <label class="form-label" id="actual-username" for="form3Example1c">Username</label>
                             <input type="text" id="updated-username" class="form-control" />
+                            <div class="invalid-feedback row" id="invalid-username" style="margin-left: 5px;">   
+                              Invalid username.
+                            </div> 
                           </div>
                         </div>
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -94,7 +97,7 @@
                         </div>
                         <hr style="color: #080808;;margin:20px;"/> 
       
-                        <div class="d-flex flex-row align-items-center mb-4">
+                        <!--<div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
                             <label class="form-label" id="actual-email" for="form3Example3c">Email</label>
@@ -105,13 +108,19 @@
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                           <button type="submit" id="btn-update-email" class="btn btn-primary btn-s">Update email</button>
                         </div>
-                        <hr style="color: #080808;;margin:20px;"/> 
-                        <div class="d-flex flex-row align-items-center mb-4">
-                          <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                          <div class="form-outline flex-fill mb-0">
-                            <label class="form-label" id="actual-country" for="form3Example4cd">Country</label>
-                            <input type="password" id="user-country" class="form-control" />
-                          </div>
+                        <hr style="color: #080808;;margin:20px;"/>--> 
+                        <label class="form-label" id="actual-country" for="form3Example4cd" style="margin-left: 15px;">Country</label>
+                        <div class="d-flex flex-row align-items-center mb-4" style="max-width:380px;margin-left: 15px;">
+                          
+                            <div class="form-outline flex-fill mb-0">
+                            <select class="form-select d-flex flex-fill align-items-center" aria-label="Default select example" id="user-country">
+                              
+                            </select>
+                            
+                            <div class="invalid-feedback row" id="invalid-country" style="margin-left: 5px;">   
+                              Please select your country.
+                            </div> 
+                          </div>   
                         </div>
 
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -120,6 +129,16 @@
                         <hr style="color: #080808;;margin:20px;"/> 
 
 
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example4c">Current password</label>
+                            <input type="password" id="user-current-password" class="form-control" />
+                            <div class="invalid-feedback row" id="invalid-current-password" style="margin-left: 5px;">   
+                              Invalid password.
+                            </div> 
+                          </div>
+                        </div>
 
       
                         <div class="d-flex flex-row align-items-center mb-4">
@@ -127,6 +146,9 @@
                           <div class="form-outline flex-fill mb-0">
                             <label class="form-label" for="form3Example4c">Password</label>
                             <input type="password" id="user-password" class="form-control" />
+                            <div class="invalid-feedback row" id="invalid-password" style="margin-left: 5px;">   
+                              Invalid password.
+                            </div> 
                           </div>
                         </div>
       
