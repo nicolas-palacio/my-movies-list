@@ -29,6 +29,7 @@ const checkUserWatchedMovie=async()=>{
         data=res.data;
         console.log(movieData.id)
         checkMovieList(data,movieData.id);
+        
     }).catch((error=>{
         return error;
     })) 
@@ -66,6 +67,7 @@ getMovieData1(movieSelected);
 
 btnAddToList.addEventListener("click",(e)=>{
     addMovieToList(sessionStorage.getItem("tokenAccess"));
+    location.reload();
 });
 
 const addMovieToList=async(token)=>{
