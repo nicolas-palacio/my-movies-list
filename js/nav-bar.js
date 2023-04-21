@@ -34,7 +34,7 @@ btnSignOut.addEventListener("click",async (e)=>{
         console.log("HEY "+data)
         sessionStorage.setItem("tokenAccess",null);
         isUserLogged();
-        window.location.href="http://localhost:5500/index.html";     
+        window.location.href="index.html";     
     }).catch((error=>{
         return error;
     }))
@@ -74,12 +74,12 @@ const showResultsMovies=(movies)=>{
 const addDivEvent=(newDiv,movieID)=>{
     newDiv.addEventListener("click",(e)=>{
         sessionStorage.setItem("movieSelectedID",movieID);
-        window.location.href="http://localhost:5500/movie-page.html";
+        window.location.href="movie-page.html";
     });
 }
 
 btnProfile.addEventListener("click",(e)=>{
-    window.location.href="http://localhost:5500/profile-page.html";
+    window.location.href="profile-page.html";
     }
 )
 

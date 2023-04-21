@@ -11,7 +11,6 @@ var ImagePadding=20;
 let scrollAmount=0;
 
 
-//sessionStorage.setItem("test","H3ll0 Fr13nd");
 const getMovies= async() =>{   
     let response= await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${APIKEY}&language=en-US&page=1`)
     let data= await response.json()
@@ -50,7 +49,7 @@ const addImgEvent=(img,movieID)=>{
 
     imgDOM.addEventListener("click",(e)=>{
         sessionStorage.setItem("movieSelectedID",movieID);
-        window.location.href="http://localhost:5500/movie-page.html";
+        window.location.href="movie-page.html";
     });
 }
 

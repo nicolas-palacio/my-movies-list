@@ -17,7 +17,7 @@ async function signIn() {
     }).then((response)=>{
         const tokenAccess = response.data.token;       
         sessionStorage.setItem("tokenAccess",tokenAccess);
-        window.location.href="http://localhost:5500/index.html";    
+        window.location.href="index.html";    
     }).catch((error)=>{
         sessionStorage.setItem("emailNotConfirmed",emailInput.value);
         showInvalidInputMessage(error.response.data.message);
@@ -29,8 +29,11 @@ async function signIn() {
 
 const showInvalidInputMessage=(message)=>{
     if(message.includes("403")){       
-        emailNotConfirm.innerHTML = `${message.substring(16)}.<div></div> <a href="signUp.html" class="">Re-send email.</a>`;
-       
+        emailNotConfirm.innerHTML = `${message.substring(16)}.<div></div> <a id="resend" style="cursor:pointer;" class="">Re-send email.</a>`;
+        const resendLink=document.getElementById("resend");
+        resendLink.addEventListener('click',(e)=>{
+            reSendEmail();
+        })
     }else{
         emailNotConfirm.innerHTML = `Incorrect username or password.`;
     }
@@ -38,6 +41,15 @@ const showInvalidInputMessage=(message)=>{
 
 const reSendEmail=async()=>{
     const email=sessionStorage.getItem("emailNotConfirmed",emailInput.value);
+    console.log(email);
 
+    axios.post("http://localhost:8888/api/v1/auth/email/confirm",{
+        email:`${email}`,       
+    }).then((response)=>{
+        console.log(response)  
+        alert("Check your email to confirm the account.")
+    }).catch((error)=>{
+        console.log(error)       
+    });
 
 }
