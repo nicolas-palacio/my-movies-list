@@ -38,7 +38,7 @@ btnUpdatePicture.addEventListener("click",()=>{
       })
         .then(function (response) {
           //handle success
-          console.log(response);
+          location.reload()
         })
         .catch(function (response) {
           //handle error

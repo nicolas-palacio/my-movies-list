@@ -26,13 +26,12 @@ searchBar.addEventListener("input",(e)=>{
 btnSignOut.addEventListener("click",async (e)=>{
 
     const tokenAccess=sessionStorage.getItem("tokenAccess");
-    await axios.get('http://localhost:8888/api/v1/auth/logout',{
+    await axios.get(`${API_DB_LINK}/api/v1/auth/logout`,{
         headers:{
             'Authorization':`Bearer ${tokenAccess}`
         }
     }).then((res)=>{
         data=res.data;
-        console.log("HEY "+data)
         sessionStorage.setItem("tokenAccess",null);
         isUserLogged();
         window.location.href="index.html";     
@@ -106,8 +105,12 @@ const getUserData=async(token)=>{
             'Authorization':`Bearer ${token}`
         }
     }).then((res)=>{
-        data=res.data;    
-        userProfilePic.src=`${API_DB_LINK}/api/v1/user/image?filename=${data.imageFilename}`  
+        data=res.data; 
+        if(data.imageFilename==null){
+            userProfilePic.src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg";
+        }else{
+            userProfilePic.src=`${API_DB_LINK}/api/v1/user/image?filename=${data.imageFilename}`  
+        }
         loadUsersData(data);
     }).catch((error=>{
         return error;
