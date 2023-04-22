@@ -79,7 +79,7 @@ const createRow=(cant)=>{
 }
 
 const addImgEvent=(img,movieID)=>{
-    const imgDOM=document.getElementById(`${img}`);
+    const imgDOM=document.getElementById(`movie-${img}`);
 
     imgDOM.addEventListener("click",(e)=>{
         sessionStorage.setItem("movieSelectedID",movieID);
@@ -104,7 +104,7 @@ function loadPosters() {
                 `
                             <div class="col">
                             <img src="https://image.tmdb.org/t/p/original${userMoviesDetails[index].poster_path}"
-                            alt="image 1" class="w-100 rounded-3"id="${movie.id}">
+                            alt="image 1" class="w-100 rounded-3"id="movie-${movie.id}" style="cursor:pointer;">
                             </div>                 
                         `
             );
@@ -118,7 +118,7 @@ function loadPosters() {
                     `
                                 <div class="col">
                                 <img src="https://image.tmdb.org/t/p/original${userMoviesDetails[index].poster_path}"
-                                alt="image 1" class="w-25 rounded-3"id="${movie.id}">
+                                alt="image 1" class="w-25 rounded-3"id="movie-${movie.id}" style="cursor:pointer;">
                                 </div>                 
                             `
                 );
@@ -128,7 +128,7 @@ function loadPosters() {
                     `
                                 <div class="col">
                                 <img src="https://image.tmdb.org/t/p/original${userMoviesDetails[index].poster_path}"
-                                alt="image 1" class="w-100 rounded-3"id="${movie.id}">
+                                alt="image 1" class="w-100 rounded-3"id="movie-${movie.id}" style="cursor:pointer;">
                                 </div>                 
                             `
                 );
@@ -136,6 +136,7 @@ function loadPosters() {
             
         }
         index++;
+        addImgEvent(movie.id,movie.id);
     }
     );
 }
