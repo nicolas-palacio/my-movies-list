@@ -1,6 +1,6 @@
 const APIKEY="7aa8b83794a6309507a808a916506d1b";
 const imgURL='https://image.tmdb.org/t/p/original/';
-
+const API_DB_LINK='http://localhost:8888'
 
 const logout=()=>{
     sessionStorage.setItem("tokenAccess",null);

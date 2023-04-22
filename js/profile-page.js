@@ -1,3 +1,4 @@
+const profilePicture=document.getElementById("profile-picture");
 const profileName=document.getElementById("profile-name");
 const hoursViewed=document.getElementById("hours-viewed");
 const profileCountry=document.getElementById("profile-location");
@@ -5,6 +6,7 @@ const profileMoviePoster=document.getElementById("profile-movie-1");
 const btnEditProfile=document.getElementById("btn-edit-profile");
 const userMoviesImgs=document.getElementById("user-movies-imgs");
 let userMoviesDetails=[];
+
 
 
 const showProfile=async ()=>{
@@ -41,10 +43,25 @@ btnEditProfile.addEventListener("click",(e)=>{
     window.location.href="edit-profile-page.html";
 });
 
-const loadProfile=(data)=>{
+const loadProfile=async(data)=>{
     profileName.innerHTML=data.username;
-    hoursViewed.innerHTML=data.hoursViewed;
+    hoursViewed.innerHTML=(data.hoursViewed/60).toFixed(1);
     profileCountry.innerHTML=data.country;
+
+    const tokenAccess=sessionStorage.getItem("tokenAccess");
+    
+    await axios.get(`${API_DB_LINK}/api/v1/user/image?filename=${data.imageFilename}`,{
+        headers:{
+            'Authorization':`Bearer ${tokenAccess}`
+        }
+    }).then((res)=>{       
+        profilePicture.src=`${API_DB_LINK}/api/v1/user/image?filename=${data.imageFilename}`   
+        
+    }).catch((error=>{
+        return error;
+    })) 
+
+
     
 }
 

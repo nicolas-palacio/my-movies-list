@@ -13,6 +13,7 @@ let fragment=document.createDocumentFragment();
 const searchResultsCard=document.getElementById("results-card");
 
 
+
 searchBar.addEventListener("input",(e)=>{
     if(searchBar.value==''){
         searchResultsCard.innerHTML='';
@@ -105,7 +106,8 @@ const getUserData=async(token)=>{
             'Authorization':`Bearer ${token}`
         }
     }).then((res)=>{
-        data=res.data;       
+        data=res.data;    
+        userProfilePic.src=`${API_DB_LINK}/api/v1/user/image?filename=${data.imageFilename}`  
         loadUsersData(data);
     }).catch((error=>{
         return error;
@@ -114,6 +116,7 @@ const getUserData=async(token)=>{
 
 const loadUsersData= (data)=>{ 
     dropdownUser.innerHTML=data.username;
+
 }
 
 
