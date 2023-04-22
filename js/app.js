@@ -28,7 +28,7 @@ const getCarouselRowMovies=async()=>{
     let response= await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${APIKEY}&language=en-US&page=1`)
     let data= await response.json()
     let trendingMovies=data.results;
-
+   
     let newImgID=0;
 
     trendingMovies.map(function (cur,index){

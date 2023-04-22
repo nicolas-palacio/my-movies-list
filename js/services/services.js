@@ -7,7 +7,7 @@ const logout=()=>{
     sessionStorage.setItem("tokenRefresh",null);
 }
 
-const refreshTokens=async()=>{
+const refreshToken=async()=>{
     const tokenAccess=sessionStorage.getItem("tokenAccess");
     await axios.get('http://localhost:8888/api/v1/auth/token/refresh',{
         headers:{
@@ -19,7 +19,7 @@ const refreshTokens=async()=>{
         sessionStorage.setItem("tokenAccess",data);
          
     }).catch((error=>{
-        console.log("HELLO")
+        console.log("ERROR")
         return error;
     })) 
 }

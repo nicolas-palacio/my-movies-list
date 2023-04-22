@@ -70,14 +70,18 @@ btnAddToList.addEventListener("click",(e)=>{
     location.reload();
 });
 
+btnRemoveFromList.addEventListener('click',(e)=>{
+    removeUserMovie(sessionStorage.getItem("tokenAccess"))
+});
+
 const addMovieToList=async(token)=>{
     const movieData=JSON.parse(sessionStorage.getItem("moviePageData"));
 
     if(token==null){
-        window.location.href="http://localhost:5500/signIn.html";
+        window.location.href="signIn.html";
     }else{
 
-        axios.post('http://localhost:8888/api/v1/user/add-movie',
+        axios.post('http://localhost:8888/api/v1/user/movie',
         {        
                 "id":`${movieData.id}`,
                 "name":`${movieData.original_title}`,
@@ -95,4 +99,19 @@ const addMovieToList=async(token)=>{
   
 
 }
+
+const removeUserMovie=(token)=>{
+    const movieData=JSON.parse(sessionStorage.getItem("moviePageData"));
+    axios.delete('http://localhost:8888/api/v1/user/movie?id='+movieData.id,{
+        headers:{
+            'Authorization':`Bearer ${token}`
+        }
+    })
+    .then((response)=>{
+        data=response.data;
+        location.reload();
+    }).catch((error)=>{
+        return error;
+    })
+};
 
