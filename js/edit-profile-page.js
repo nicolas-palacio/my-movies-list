@@ -1,9 +1,12 @@
 const formUpdate=document.getElementById("form-update");
+const btnUpdatePicture=document.getElementById("btn-update-pic");
 const btnUpdateUsername=document.getElementById("btn-update-username");
 const btnUpdateEmail=document.getElementById("btn-update-email");
 const btnUpdatePassword=document.getElementById("btn-update-password");
 const btnUpdateCountry=document.getElementById("btn-update-country");
 
+
+const inputPicture=document.getElementById("user-picture")
 const actualCountry=document.getElementById("actual-country");
 const actualUsername=document.getElementById("actual-username");
 const actualEmail=document.getElementById("actual-email");
@@ -14,9 +17,34 @@ const currentUserPassword=document.getElementById("user-current-password");
 const updatedPassword=document.getElementById("user-password");
 const updatedPasswordRep=document.getElementById("user-password-rep");
 
+const API_DB_LINK='http://localhost:8888'
+
 formUpdate.addEventListener("click",(e)=>{
     e.preventDefault();
 });
+
+btnUpdatePicture.addEventListener("click",()=>{
+    const token=sessionStorage.getItem("tokenAccess");
+    var bodyFormData=new FormData();
+    bodyFormData.append('file', inputPicture.files[0]);
+
+    console.log(inputPicture.files[0]);
+
+    axios({
+        method: "post",
+        url:`${API_DB_LINK}/api/v1/user/image`,
+        data: bodyFormData,
+        headers: { "Content-Type": "multipart/form-data",'Authorization':`Bearer ${token}` },
+      })
+        .then(function (response) {
+          //handle success
+          console.log(response);
+        })
+        .catch(function (response) {
+          //handle error
+          console.log(response);
+        });
+})
 
 const loadCountryList=async ()=>{
     const response = await fetch("../countries.json");
@@ -38,7 +66,7 @@ const loadCountryList=async ()=>{
 
 const getUserDataForm=async(token)=>{
     let data='';
-    await axios.get('http://localhost:8888/api/v1/user/info',{
+    await axios.get(`${API_DB_LINK}/api/v1/user/info`,{
         headers:{
             'Authorization':`Bearer ${token}`
         }
@@ -65,7 +93,7 @@ btnUpdateUsername.addEventListener("click",async(e)=>{
     validateUsernameInput();
     const tokenAccess=sessionStorage.getItem("tokenAccess");
 
-    await axios.put('http://localhost:8888/api/v1/user',{
+    await axios.put(`${API_DB_LINK}/api/v1/user`,{
         username:`${updatedUsername.value}`
     },{
         headers:{
@@ -94,7 +122,7 @@ const validateUsernameInput=()=>{
 btnUpdatePassword.addEventListener("click",async(e)=>{
     const tokenAccess=sessionStorage.getItem("tokenAccess");
 
-    await axios.put('http://localhost:8888/api/v1/user',{
+    await axios.put(`${API_DB_LINK}/api/v1/user`,{
         currentPassword:`${currentUserPassword.value}`,
         password:`${updatedPassword.value}`,
         passwordConfirm:`${updatedPasswordRep.value}`
@@ -130,7 +158,7 @@ const showInputError=(message)=>{
 
 const reAuthenticate=async()=>{
 
-    axios.post("http://localhost:8888/api/v1/auth/authenticate",{
+    axios.post(`${API_DB_LINK}/api/v1/auth/authenticate`,{
         email:`${sessionStorage.getItem("actualEmail")}`,
         password:`${updatedPassword.value}`
     }).then((response)=>{
@@ -152,7 +180,7 @@ btnUpdateCountry.addEventListener("click",async(e)=>{
     const tokenAccess=sessionStorage.getItem("tokenAccess");
     if(userCountry.value!='Your country'){
 
-        await axios.put('http://localhost:8888/api/v1/user',{
+        await axios.put(`${API_DB_LINK}/api/v1/user`,{
             country:`${userCountry.value}`
         },{
             headers:{
