@@ -20,7 +20,7 @@ const checkUserWatchedMovie=async()=>{
     const movieData=JSON.parse(sessionStorage.getItem("moviePageData"));
 
     const tokenAccess=sessionStorage.getItem("tokenAccess");
-    await axios.get('http://localhost:8888/api/v1/user/list',{
+    await axios.get('https://my-movies-list.herokuapp.com/api/v1/user/list',{
         headers:{
             'Authorization':`Bearer ${tokenAccess}`
         }
@@ -79,7 +79,7 @@ const addMovieToList=async(token)=>{
         window.location.href="signIn.html";
     }else{
 
-        axios.post('http://localhost:8888/api/v1/user/movie',
+        axios.post('https://my-movies-list.herokuapp.com/api/v1/user/movie',
         {        
                 "id":`${movieData.id}`,
                 "name":`${movieData.original_title}`,
@@ -98,7 +98,7 @@ const addMovieToList=async(token)=>{
 
 const removeUserMovie=(token)=>{
     const movieData=JSON.parse(sessionStorage.getItem("moviePageData"));
-    axios.delete('http://localhost:8888/api/v1/user/movie?id='+movieData.id,{
+    axios.delete('https://my-movies-list.herokuapp.com/api/v1/user/movie?id='+movieData.id,{
         headers:{
             'Authorization':`Bearer ${token}`
         }

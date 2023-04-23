@@ -77,7 +77,7 @@ const sliderScrollRight=()=>{
 }
 
 const testPut=async()=>{
-    let res = await axios.put("http://localhost:8888/api/v1/user",{
+    let res = await axios.put("https://my-movies-list.herokuapp.com/api/v1/user",{
         username:"nicoo"
     },{
         headers:{
