@@ -11,7 +11,7 @@ loginBtn.addEventListener('click',(e)=>{
 
 async function signIn() {    
    
-    axios.post("http://localhost:8888/api/v1/auth/authenticate",{
+    axios.post("https://my-movies-list.herokuapp.com/api/v1/auth/authenticate",{
         email:`${emailInput.value}`,
         password:`${passwordInput.value}`
     }).then((response)=>{
@@ -43,7 +43,7 @@ const reSendEmail=async()=>{
     const email=sessionStorage.getItem("emailNotConfirmed",emailInput.value);
     console.log(email);
 
-    axios.post("http://localhost:8888/api/v1/auth/email/confirm",{
+    axios.post("https://my-movies-list.herokuapp.com/api/v1/auth/email/confirm",{
         email:`${email}`,       
     }).then((response)=>{
         console.log(response)  

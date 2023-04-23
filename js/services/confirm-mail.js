@@ -7,7 +7,7 @@ const confirmMail=async()=>{
     const urlTokenParam=new URLSearchParams(queryString);
     const token=urlTokenParam.get('token');
     
-    await axios.get('http://localhost:8888/api/v1/auth/register/confirm?token='+token).then((res)=>{
+    await axios.get('https://my-movies-list.herokuapp.com/api/v1/auth/register/confirm?token='+token).then((res)=>{
         data=res.data; 
         checkLogo.classList.remove("d-none");      
         

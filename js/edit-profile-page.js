@@ -17,7 +17,7 @@ const currentUserPassword=document.getElementById("user-current-password");
 const updatedPassword=document.getElementById("user-password");
 const updatedPasswordRep=document.getElementById("user-password-rep");
 
-const API_DB_LINK='http://localhost:8888'
+const API_DB_LINK='https://my-movies-list.herokuapp.com'
 
 formUpdate.addEventListener("click",(e)=>{
     e.preventDefault();
@@ -132,7 +132,6 @@ btnUpdatePassword.addEventListener("click",async(e)=>{
         }
     }).then((res)=>{
         data=res.data;   
-        console.log(data);
         reAuthenticate();
         location.reload();
     }).catch((error=>{

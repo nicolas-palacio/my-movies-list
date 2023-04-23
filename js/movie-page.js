@@ -13,7 +13,6 @@ const fillCard=(data)=>{
     cardDescription.innerText=data.overview;
     cardYear.innerText="Release date: "+data.release_date;
     cardDuration.innerText="Duration: "+data.runtime+" min.";
-    //TO-DO Check if user got the movie; 
 };
 
 
@@ -67,7 +66,6 @@ getMovieData1(movieSelected);
 
 btnAddToList.addEventListener("click",(e)=>{
     addMovieToList(sessionStorage.getItem("tokenAccess"));
-    location.reload();
 });
 
 btnRemoveFromList.addEventListener('click',(e)=>{
@@ -76,8 +74,8 @@ btnRemoveFromList.addEventListener('click',(e)=>{
 
 const addMovieToList=async(token)=>{
     const movieData=JSON.parse(sessionStorage.getItem("moviePageData"));
-
-    if(token==null){
+    
+    if(token==null || token=='null'){
         window.location.href="signIn.html";
     }else{
 
@@ -94,10 +92,8 @@ const addMovieToList=async(token)=>{
             },
     
         });
+        location.reload();
     }
-
-  
-
 }
 
 const removeUserMovie=(token)=>{

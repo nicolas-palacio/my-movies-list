@@ -12,7 +12,7 @@ let userMoviesDetails=[];
 const showProfile=async ()=>{
     let data='';
     const tokenAccess=sessionStorage.getItem("tokenAccess");
-    await axios.get('http://localhost:8888/api/v1/user/info',{
+    await axios.get('https://my-movies-list.herokuapp.com/api/v1/user/info',{
         headers:{
             'Authorization':`Bearer ${tokenAccess}`
         }
@@ -71,7 +71,7 @@ showProfile();
 const loadUserMovies=async()=>{
     const tokenAccess=sessionStorage.getItem("tokenAccess");
     
-    await axios.get('http://localhost:8888/api/v1/user/list',{
+    await axios.get('https://my-movies-list.herokuapp.com/api/v1/user/list',{
         headers:{
             'Authorization':`Bearer ${tokenAccess}`
         }

@@ -1,6 +1,6 @@
 const APIKEY="7aa8b83794a6309507a808a916506d1b";
 const imgURL='https://image.tmdb.org/t/p/original/';
-const API_DB_LINK='http://localhost:8888'
+const API_DB_LINK='https://my-movies-list.herokuapp.com'
 
 const logout=()=>{
     sessionStorage.setItem("tokenAccess",null);
@@ -9,7 +9,7 @@ const logout=()=>{
 
 const refreshToken=async()=>{
     const tokenAccess=sessionStorage.getItem("tokenAccess");
-    await axios.get('http://localhost:8888/api/v1/auth/token/refresh',{
+    await axios.get('https://my-movies-list.herokuapp.com/api/v1/auth/token/refresh',{
         headers:{
             'Authorization':`Bearer ${tokenAccess}`
         }

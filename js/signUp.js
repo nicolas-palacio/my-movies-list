@@ -1,6 +1,3 @@
-/*import data from '../countries.json' assert {type:'json'};
-*/
-
 const formCard=document.getElementById("form-card");
 const form=document.getElementById("form-sign-up");
 const username=document.getElementById("username");
@@ -13,9 +10,6 @@ const successDiv=document.getElementById("signup-successful");
 const successMessage=document.getElementById("success-message");
 
 let firstOptionRemoved=false;
-
-
-
 
 
 form.addEventListener("submit",(e)=>{
@@ -59,7 +53,7 @@ async function signUp() {
     }
 
    
-    let res = await axios.post("http://localhost:8888/api/v1/auth/register",{
+    let res = await axios.post("https://my-movies-list.herokuapp.com/api/v1/auth/register",{
         username: `${username.value}`,
         email: `${userEmail.value}`,
         country:`${userCountry.value}`,
