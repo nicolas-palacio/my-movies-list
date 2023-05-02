@@ -9,7 +9,7 @@ const confirmMail=async()=>{
     const urlTokenParam=new URLSearchParams(queryString);
     const token=urlTokenParam.get('token');
     
-    await axios.get(API_BACKEND_LINK+'api/v1/auth/register/confirm?token='+token).then((res)=>{
+    await axios.get(API_BACKEND_LINK+'/api/v1/auth/register/confirm?token='+token).then((res)=>{
         data=res.data; 
         checkLogo.classList.remove("d-none");      
         
