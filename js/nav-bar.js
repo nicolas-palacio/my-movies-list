@@ -12,7 +12,7 @@ const userProfilePic=document.getElementById("user-profile-pic-nav");
 let fragment=document.createDocumentFragment();
 const searchResultsCard=document.getElementById("results-card");
 
-
+API_BACKEND_LINK='https://my-movies-list.herokuapp.com';
 
 searchBar.addEventListener("input",(e)=>{
     if(searchBar.value==''){
@@ -26,7 +26,7 @@ searchBar.addEventListener("input",(e)=>{
 btnSignOut.addEventListener("click",async (e)=>{
 
     const tokenAccess=sessionStorage.getItem("tokenAccess");
-    await axios.get(`${API_DB_LINK}/api/v1/auth/logout`,{
+    await axios.get(`${API_BACKEND_LINK}/api/v1/auth/logout`,{
         headers:{
             'Authorization':`Bearer ${tokenAccess}`
         }
@@ -100,7 +100,7 @@ const isUserLogged=()=>{
 
 const getUserData=async(token)=>{
     let data='';
-    await axios.get('https://my-movies-list.herokuapp.com/api/v1/user/info',{
+    await axios.get(API_BACKEND_LINK+'/api/v1/user/info',{
         headers:{
             'Authorization':`Bearer ${token}`
         }
@@ -109,7 +109,7 @@ const getUserData=async(token)=>{
         if(data.imageFilename==null){
             userProfilePic.src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg";
         }else{
-            userProfilePic.src=`${API_DB_LINK}/api/v1/user/image?filename=${data.imageFilename}`  
+            userProfilePic.src=`${API_BACKEND_LINK}/api/v1/user/image?filename=${data.imageFilename}`  
         }
         loadUsersData(data);
     }).catch((error=>{
@@ -118,6 +118,7 @@ const getUserData=async(token)=>{
 }
 
 const loadUsersData= (data)=>{ 
+    sessionStorage.setItem("actual-username",data.username)
     dropdownUser.innerHTML=data.username;
 
 }

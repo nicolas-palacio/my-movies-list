@@ -5,26 +5,61 @@ const profileCountry=document.getElementById("profile-location");
 const profileMoviePoster=document.getElementById("profile-movie-1");
 const btnEditProfile=document.getElementById("btn-edit-profile");
 const userMoviesImgs=document.getElementById("user-movies-imgs");
+const userFollowers=document.getElementById("user-followers");
+const userFollowing=document.getElementById("user-following");
+const btnFollowUser=document.getElementById("btn-follow");
+const btnUnfollowUser=document.getElementById("btn-unfollow");
+
 let userMoviesDetails=[];
 
-
+API_BACKEND_LINK='https://my-movies-list.herokuapp.com';
 
 const showProfile=async ()=>{
     let data='';
     const tokenAccess=sessionStorage.getItem("tokenAccess");
-    await axios.get('https://my-movies-list.herokuapp.com/api/v1/user/info',{
+    await axios.get(API_BACKEND_LINK+'/api/v1/user/info',{
         headers:{
             'Authorization':`Bearer ${tokenAccess}`
         }
     }).then((res)=>{
         data=res.data;
-        console.log(data)      
+        console.log(data)
+        if(sessionStorage.getItem("actual-username")==data.username){
+            btnFollowUser.classList.add("d-none");
+            btnUnfollowUser.classList.add("d-none");
+        }else{
+            //isUserFollowing();
+        }      
         loadProfile(data);    
     }).catch((error=>{
         refreshToken()
         //return error;
     })) 
     
+}
+
+
+const isUserFollowing=async()=>{
+    const tokenAccess=sessionStorage.getItem("tokenAccess");
+
+    await axios.get(API_BACKEND_LINK+'/api/v1/user/info',{
+        headers:{
+            'Authorization':`Bearer ${tokenAccess}`
+        }
+    }).then((res)=>{
+        data=res.data;
+        console.log(data)
+        if(sessionStorage.getItem("actual-username")==data.username){
+            btnFollowUser.classList.add("d-none");
+            btnUnfollowUser.classList.add("d-none");
+        }else{
+            isUserFollowing();
+        }      
+        loadProfile(data);    
+    }).catch((error=>{
+        refreshToken()
+        //return error;
+    })) 
 }
 
 const getMoviePoster=async(movies)=>{
@@ -47,15 +82,17 @@ const loadProfile=async(data)=>{
     profileName.innerHTML=data.username;
     hoursViewed.innerHTML=(data.hoursViewed/60).toFixed(1);
     profileCountry.innerHTML=data.country;
+    userFollowers.innerHTML=data.followers.length;
+    userFollowing.innerHTML=data.following.length;
 
     const tokenAccess=sessionStorage.getItem("tokenAccess");
     
-    await axios.get(`${API_DB_LINK}/api/v1/user/image?filename=${data.imageFilename}`,{
+    await axios.get(`${API_BACKEND_LINK}/api/v1/user/image?filename=${data.imageFilename}`,{
         headers:{
             'Authorization':`Bearer ${tokenAccess}`
         }
     }).then((res)=>{       
-        profilePicture.src=`${API_DB_LINK}/api/v1/user/image?filename=${data.imageFilename}`   
+        profilePicture.src=`${API_BACKEND_LINK}/api/v1/user/image?filename=${data.imageFilename}`   
         
     }).catch((error=>{
         return error;
@@ -71,7 +108,7 @@ showProfile();
 const loadUserMovies=async()=>{
     const tokenAccess=sessionStorage.getItem("tokenAccess");
     
-    await axios.get('https://my-movies-list.herokuapp.com/api/v1/user/list',{
+    await axios.get(`${API_BACKEND_LINK}/api/v1/user/list`,{
         headers:{
             'Authorization':`Bearer ${tokenAccess}`
         }

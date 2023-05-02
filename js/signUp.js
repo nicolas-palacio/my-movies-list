@@ -11,6 +11,7 @@ const successMessage=document.getElementById("success-message");
 
 let firstOptionRemoved=false;
 
+const API_DB_LINK='https://my-movies-list.herokuapp.com'
 
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
@@ -49,11 +50,12 @@ async function signUp() {
     }else{
         formCard.classList.add("d-none");
         successDiv.classList.remove("d-none");
-        spinner.classList.remove("d-none");       
+        spinner.classList.remove("d-none"); 
+        
     }
 
    
-    let res = await axios.post("https://my-movies-list.herokuapp.com/api/v1/auth/register",{
+    let res = await axios.post(API_DB_LINK+"/api/v1/auth/register",{
         username: `${username.value}`,
         email: `${userEmail.value}`,
         country:`${userCountry.value}`,
@@ -61,8 +63,9 @@ async function signUp() {
         passwordConfirm: `${userPasswordRep.value}`
     }).then((response)=>{
         let data = response.data;       
-        console.log(response.status); 
-
+        successDiv.classList.remove("d-none");
+        spinner.classList.add("d-none"); 
+        successMessage.classList.remove("d-none")       
     }).catch((error)=>{
         console.log(error.response.data.message.substring(28));
         showInvalidInputMessage(error.response.data.message.substring(28));
@@ -71,6 +74,8 @@ async function signUp() {
         formCard.classList.remove("d-none");
     });
 }
+
+loadCountryList();
 
 const validateInputs=()=>{
     if(username.value==''){
@@ -110,7 +115,7 @@ const showInvalidInputMessage=(message)=>{
     validateInputs();
 }
 
-loadCountryList();
+
 
 function passwordConfirmMessage(message) {
     if (message.includes("passwords")) {

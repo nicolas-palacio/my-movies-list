@@ -1,13 +1,15 @@
 const checkLogo=document.getElementById("check-logo");
 const cardMessage=document.getElementById("message");
 
+API_BACKEND_LINK='http://localhost:8888/';
+
 const confirmMail=async()=>{
     let data='';
     const queryString=window.location.search;
     const urlTokenParam=new URLSearchParams(queryString);
     const token=urlTokenParam.get('token');
     
-    await axios.get('https://my-movies-list.herokuapp.com/api/v1/auth/register/confirm?token='+token).then((res)=>{
+    await axios.get(API_BACKEND_LINK+'api/v1/auth/register/confirm?token='+token).then((res)=>{
         data=res.data; 
         checkLogo.classList.remove("d-none");      
         

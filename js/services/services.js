@@ -9,7 +9,7 @@ const logout=()=>{
 
 const refreshToken=async()=>{
     const tokenAccess=sessionStorage.getItem("tokenAccess");
-    await axios.get('https://my-movies-list.herokuapp.com/api/v1/auth/token/refresh',{
+    await axios.get(API_DB_LINK+'/api/v1/auth/token/refresh',{
         headers:{
             'Authorization':`Bearer ${tokenAccess}`
         }

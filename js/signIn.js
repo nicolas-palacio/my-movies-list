@@ -2,6 +2,8 @@ const emailInput= document.getElementById("email-input");
 const passwordInput= document.getElementById("password-input");
 const loginBtn=document.getElementById("login-btn");
 const emailNotConfirm = document.getElementById('invalid-credentials');
+API_BACKEND_LINK='https://my-movies-list.herokuapp.com';
+
 
 loginBtn.addEventListener('click',(e)=>{
     e.preventDefault()
@@ -11,7 +13,7 @@ loginBtn.addEventListener('click',(e)=>{
 
 async function signIn() {    
    
-    axios.post("https://my-movies-list.herokuapp.com/api/v1/auth/authenticate",{
+    axios.post(API_BACKEND_LINK+"/api/v1/auth/authenticate",{
         email:`${emailInput.value}`,
         password:`${passwordInput.value}`
     }).then((response)=>{
@@ -43,7 +45,7 @@ const reSendEmail=async()=>{
     const email=sessionStorage.getItem("emailNotConfirmed",emailInput.value);
     console.log(email);
 
-    axios.post("https://my-movies-list.herokuapp.com/api/v1/auth/email/confirm",{
+    axios.post(API_BACKEND_LINK+"/api/v1/auth/email/confirm",{
         email:`${email}`,       
     }).then((response)=>{
         console.log(response)  
