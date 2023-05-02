@@ -20,7 +20,7 @@ form.addEventListener("submit",(e)=>{
 })
 
 const loadCountryList=async ()=>{
-    const response = await fetch("../countries.json");
+    const response = await fetch("countries.json");
     const countries = await response.json();
 
     let opt = document.createElement("option");
