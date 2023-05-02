@@ -1,7 +1,7 @@
 const checkLogo=document.getElementById("check-logo");
 const cardMessage=document.getElementById("message");
 
-API_BACKEND_LINK='http://localhost:8888/';
+API_BACKEND_LINK='https://my-movies-list.herokuapp.com';
 
 const confirmMail=async()=>{
     let data='';
