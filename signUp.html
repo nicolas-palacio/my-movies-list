@@ -14,45 +14,50 @@
 <body class="bg-dark">
   <header>
     <nav class="navbar navbar-expand-lg navbar-light border-1 border-bottom">         
-        <div class="container-fluid ">
-            <a class="navbar-brand text-white" href="index.html">My Movies List</a>
+        <div class="container-fluid">
+              <a class="navbar-brand text-white" href="index.html">My Movies List</a>
 
-            <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+              <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
 
-            <div id="navbarMenu" class="collapse navbar-collapse" >
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><input class="form-control mr-sm-2" type="search" placeholder="Search movie" aria-label="Search" id="search-bar"></li>
-                    <li class="nav-item ms-2"><button class="btn btn-success my-2 my-sm-0" type="submit">Search</button></li>
-                    <li class="nav-item ms-2" id="btn-sign-up"><a class="btn btn-outline-success my-2 my-sm-0" href="signUp.html">Sign Up</a></li>
-                    <li class="nav-item ms-2" id="btn-sign-in"><a class="btn btn-outline-success my-2 my-sm-0" href="signIn.html">Sign In</a></li>
-                </ul>
-            </div>               
-        </div>
-        <div class="dropdown" id="dropdown-user-menu">
-          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdown-user" data-bs-toggle="dropdown" aria-expanded="false">
-            username
-          </a>
-        
-          <ul class="dropdown-menu" aria-labelledby="dropdown-user">
-            <li ><a class="dropdown-item" href="#"id="btn-profile">Profile</a></li>
-            <li><a class="dropdown-item" href="#" id="btn-settings">Settings</a></li>
-            <li><a class="dropdown-item" href="#" id="btn-signout">Logout</a></li>
-          </ul>
-        </div>
-    </nav>
-    <div class="container mt-auto ms-0 position-absolute " style="z-index: 10;" id="search-menu">
-      <div class="row d-flex justify-content-center" >
-          <div class="col-md-5">
-              <div class="card" style="display: none;" id="results-card">                                            
+              <div id="menu" class="collapse navbar-collapse">
+                  <ul class="navbar-nav me-auto" >
+                      <li class="nav-item"><input class="form-control mr-sm-2" type="search" placeholder="Search movie" aria-label="Search" id="search-bar"></li>
+                      <li class="nav-item ms-2"><button class="btn btn-success my-2 my-sm-0" type="submit">Search</button></li>
+                      <li class="nav-item ms-2"  id="btn-sign-up"><a class="btn btn-outline-success my-2 my-sm-0" href="signUp.html">Sign Up</a></li>
+                      <li class="nav-item ms-2" id="btn-sign-in"><a class="btn btn-outline-success my-2 my-sm-0" href="signIn.html">Sign In</a></li>
+                  </ul>
+                  <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" id="user-profile-pic-nav" width="40" height="40" class="rounded-circle">
+                  <div class="dropdown me-5" id="dropdown-user-menu">
+                    
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdown-user" data-bs-toggle="dropdown" aria-expanded="false">
+                      username                                
+                    </a>  
+                    
+                    <ul class="dropdown-menu" aria-labelledby="dropdown-user">
+                      <li ><a class="dropdown-item" href="profile-page.html"id="btn-profile">My profile</a></li>
+                      <li><a class="dropdown-item" href="edit-profile-page.html" id="btn-settings">Settings</a></li>
+                      <li><a class="dropdown-item" href="#" id="btn-signout">Logout</a></li>
+                    </ul>
+                  </div>
               </div>
-          </div>
-      </div>
-    </div>
-  
 
-  </header>
+              <div class="container   position-absolute" style="z-index: 10;margin-left: 150px;" id="search-menu">
+                <div class="row d-flex ">
+                    <div class="col-md-5">
+                        <div class="card" style="display: none;" id="results-card">                                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+              </div>
+
+          
+         
+    </nav>
+</header>
 
   
     <section class="vh-100 bg-dark" id="form-card">

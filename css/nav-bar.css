@@ -6,3 +6,15 @@
 .hide{
     display: none;
 }
+
+@media only screen and (max-width: 999px){
+    #search-menu{
+        margin-top: 380px;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    #search-menu{
+        margin-top: 480px;
+    }
+}
