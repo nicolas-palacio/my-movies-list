@@ -25,8 +25,8 @@ const showProfile=async ()=>{
         data=res.data;
         console.log(data)
         if(sessionStorage.getItem("actual-username")==data.username){
-            btnFollowUser.classList.add("d-none");
-            btnUnfollowUser.classList.add("d-none");
+           // btnFollowUser.classList.add("d-none");
+           // btnUnfollowUser.classList.add("d-none");
         }else{
             //isUserFollowing();
         }      

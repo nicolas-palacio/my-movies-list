@@ -5,6 +5,7 @@ const btnSignIn=document.getElementById("btn-sign-in");
 const btnProfile=document.getElementById("btn-profile");
 const btnSettings=document.getElementById("btn-settings");
 const btnSignOut=document.getElementById("btn-signout");
+const btnSearch=document.getElementById("btn-search");
 
 const searchBar=document.getElementById("search-bar");
 const searchMenu=document.getElementById("search-menu");
@@ -13,6 +14,23 @@ let fragment=document.createDocumentFragment();
 const searchResultsCard=document.getElementById("results-card");
 
 API_BACKEND_LINK='https://my-movies-list.herokuapp.com';
+
+/*btnSearch.addEventListener('click',async(e)=>{
+    if(searchBar.value!='' && searchBar.value.charAt(0)=='@'){
+        let data='';
+    await axios.get(API_BACKEND_LINK+'/api/v1/user/info',{
+        headers:{
+            'Authorization':`Bearer ${token}`
+        }
+    }).then((res)=>{
+        data=res.data; 
+        
+    }).catch((error=>{
+        return error;
+    })) 
+    }
+})*/
+
 
 searchBar.addEventListener("input",(e)=>{
     if(searchBar.value==''){
